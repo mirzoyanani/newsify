@@ -1,20 +1,16 @@
 // import React from "react";
-
+import api_key from "../api_key";
+import { useEffect } from "react";
 const General = () => {
+    useEffect(() => {
+       fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${api_key}`).then((rsp)=>{
+        return rsp.json();
+       }).then((rsp)=>{
+        console.log(rsp);
+       });
+      },[]);
   return (
     <div>
-<form>
-  <label >Choose a car:</label>
-  <select name="cars" id="cars">
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="opel">Opel</option>
-    <option value="audi">Audi</option>
-  </select>
-
-  <br></br>
-  <input type="submit" value="Submit"/>
-</form>
 
     </div>
   );
