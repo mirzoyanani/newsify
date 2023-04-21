@@ -11,8 +11,8 @@ module.exports = {
   settings: { react: { version: "18.2" } },
   plugins: ["react-refresh"],
   rules: {
-    // "react-refresh/only-export-components": "warn",
-    // "semi": ["error", "always"],
-    // "quotes": ["error", "double"]
+    "react-refresh/only-export-components": "warn",
+    "semi": ["error", "always"],
+    "quotes": ["error", "double"]
   },
 };

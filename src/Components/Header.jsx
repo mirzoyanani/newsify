@@ -18,7 +18,7 @@ const Header = () => {
       <form id="content">
       <div className="search-box">
     <button className="btn-search"><i className="fas fa-search"></i></button>
-    <input type="text" className="input-search" placeholder="Type to Search..."/>
+    <input type="search" className="input-search" placeholder="Type to Search..."/>
   </div>
 </form>
       </div>
