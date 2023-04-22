@@ -48,9 +48,6 @@ const General = () => {
   // function handleSave(title,publishedAt,imgUrl){
   //      dispatch(setSaved({title,publishedAt,imgUrl}));
   // }
-
-  // const saved = useSelector((state) => state.savednews.saved);
-  // console.log(saved);
   // console.log(5555);
 
   const [selectedArticle, setSelectedArticle] = useState(null);
