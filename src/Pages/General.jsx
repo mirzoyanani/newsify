@@ -2,50 +2,57 @@
 import api_key from "../api_key";
 import "../Css/general.css";
 import { useEffect, useState } from "react";
-import { setNews ,setArticlesCount} from "../Redux/Slices/newsSlice";
+import { setNews, setArticlesCount } from "../Redux/Slices/newsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import NewsCard from "../Components/NewsCard";
 import countries from "../countries";
 import categories from "../categories";
-
-  
-
+// import { setSaved } from "../Redux/Slices/savedNewsSlice";
 
 const General = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState("us");
   const [category, setCategory] = useState("general");
-  const [page,setPage] = useState(1);
+  const [page, setPage] = useState(1);
 
   const pageSize = 15;
-
-
   const articlesCount = useSelector((state) => state.news.articlescount);
-  // console.log(articlesCount);
-  function nextPage(){
-     if(page<(articlesCount/pageSize)){
-        setPage(page+1);
-     }
+  function nextPage() {
+    if (page < articlesCount / pageSize) {
+      setPage(page + 1);
+    }
   }
-  function prevPage(){
-    if(page>1){
-      setPage(page-1);
-   }
+  function prevPage() {
+    if (page > 1) {
+      setPage(page - 1);
+    }
   }
-useEffect(() => {
-    setLoading(true);   
-      fetch( `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${api_key}&category=${category}&pageSize=${pageSize}&page=${page}`).then((rsp)=>{
-        return rsp.json();
-     }).then((rsp)=>{
+  useEffect(() => {
+    setLoading(true);
+    fetch(
+      `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${api_key}&category=${category}&pageSize=${pageSize}&page=${page}`
+    )
+      .then((rsp) =>  rsp.json())
+      .then((rsp) => {
         dispatch(setNews(rsp.articles));
+        console.log(rsp.articles);
         dispatch(setArticlesCount(rsp.totalResults));
         setLoading(false);
-     });
-  }, [dispatch, country, category,page]);
+      });
+  }, [dispatch, country, category, page]);
 
   const news = useSelector((state) => state.news.news);
-   return (
+
+  // function handleSave(title,publishedAt,imgUrl){
+  //      dispatch(setSaved({title,publishedAt,imgUrl}));
+  // }
+
+  // const saved = useSelector((state) => state.savednews.saved);
+  // console.log(saved);
+  // console.log(5555);
+
+  return (
     <>
       <div className="news">
         {loading && (
@@ -66,6 +73,7 @@ useEffect(() => {
               id="countries"
               onChange={(e) => {
                 setCountry(e.target.value);
+                setPage(1);
               }}
             >
               {countries.map((item, i) => {
@@ -83,6 +91,7 @@ useEffect(() => {
               id="category"
               onChange={(e) => {
                 setCategory(e.target.value);
+                setPage(1);
               }}
             >
               {categories.map((item, i) => {
@@ -107,7 +116,9 @@ useEffect(() => {
             </div>
             <div className="nextprevbtns">
               <button onClick={prevPage}>Prev Page</button>
-              <span><p>{page}</p></span>
+              <span>
+                <p>{page}</p>
+              </span>
               <button onClick={nextPage}>Next Page</button>
             </div>
           </div>

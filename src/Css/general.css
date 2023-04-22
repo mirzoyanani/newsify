@@ -6,12 +6,15 @@
     padding: 10px;
     /* align-items: center;
     justify-content: center; */
-    border: 2px solid;
+     /* background-color: antiquewhite; */
+     background-color: rgb(
+        242, 245, 218
+        );
 }
 .newsCards{
    display: flex;
     flex-wrap: wrap;
-   
+    /* column-count: 3; */
       /* align-items: center;  */
     justify-content: center; 
     gap: 20px;
