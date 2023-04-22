@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import NewsCard from "../Components/NewsCard";
 import countries from "../countries";
 import categories from "../categories";
+import ReadMoreModal from "../Components/ReadMoreModal";
 // import { setSaved } from "../Redux/Slices/savedNewsSlice";
 
 const General = () => {
@@ -51,6 +52,18 @@ const General = () => {
   // const saved = useSelector((state) => state.savednews.saved);
   // console.log(saved);
   // console.log(5555);
+
+  const [selectedArticle, setSelectedArticle] = useState(null);
+
+  const handleReadMore = (article) => {
+    setSelectedArticle(article);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedArticle(null);
+  };
+
+  ///////////////
 
   return (
     <>
@@ -103,13 +116,15 @@ const General = () => {
               })}
             </select>
             <div className="newsCards">
+            {selectedArticle && (
+        <ReadMoreModal article={selectedArticle} onClose={handleCloseModal} />
+      )} 
               {news.map((item, i) => {
                 return (
                   <NewsCard
                     key={i}
-                    title={item.title}
-                    imgUrl={item.urlToImage}
-                    publishedAt={item.publishedAt}
+                    article={item}
+                    onReadMore={handleReadMore}
                   />
                 );
               })}

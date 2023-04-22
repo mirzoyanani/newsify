@@ -1,17 +1,16 @@
-import { useState } from "react";
+
 import "../Css/newsCard.css";
 // import { useDispatch } from "react-redux";
-
-const NewsCard = ({ title, description, source, publishedAt, imgUrl }) => {
-  // const dispatch = useDispatch();
+const NewsCard = ({article, onReadMore}) => {
+  
   return (
     <div className="newsCard">
         <div>
-        <img className="newsimg" src={imgUrl} />
+        <img className="newsimg" src={article.urlToImage} />
       </div>
-      <p>{publishedAt}</p>
+      <p>{article.publishedAt}</p>
       <div>
-        <p className="newsCardTitle">{title}</p>
+        <p className="newsCardTitle">{article.title}</p>
         
       </div>
       {/* <p>{description}</p>
@@ -20,9 +19,8 @@ const NewsCard = ({ title, description, source, publishedAt, imgUrl }) => {
       <div className="btns">
       <button className="saveSharebtn">Save</button>
     <button className="saveSharebtn">Share</button>
-    <button className="saveSharebtn">Read More</button>
+    <button onClick={() => onReadMore(article)} className="saveSharebtn">Read More</button>
       </div>
-    
     </div>
   );
 };
