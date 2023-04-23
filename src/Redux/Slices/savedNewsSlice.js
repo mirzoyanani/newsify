@@ -7,9 +7,8 @@ const savedNewsSlice = createSlice({
   },
   reducers: {
     setSaved: (state, action) => {
-        state.saved.push(action.payload);
-      },
-  },
-});
+       state.saved.push(action.payload);
+
+}}});
 export const { setSaved } = savedNewsSlice.actions;
 export default savedNewsSlice.reducer;
