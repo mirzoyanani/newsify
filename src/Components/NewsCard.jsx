@@ -2,10 +2,10 @@
 import "../Css/newsCard.css";
 import { useDispatch } from "react-redux";
 import { setSaved } from "../Redux/Slices/savedNewsSlice";
-const NewsCard = ({article, onReadMore,id}) => {
-  const dispach = useDispatch();
+const NewsCard = ({article, onReadMore}) => {
+const dispach = useDispatch();
 function setSavednews(){
-    dispach(setSaved({article,id}));
+    dispach(setSaved({article}));
 }
   return (
     <div className="newsCard">

@@ -37,7 +37,7 @@ const General = () => {
       .then((rsp) =>  rsp.json())
       .then((rsp) => {
         dispatch(setNews(rsp.articles));
-        console.log(rsp.articles);
+        // console.log(rsp.articles);
         dispatch(setArticlesCount(rsp.totalResults));
         setLoading(false);
       });
@@ -119,8 +119,7 @@ const General = () => {
               {news.map((item, i) => {
                 return (
                   <NewsCard
-                    id={item.title}
-                    key={i}
+                    key={"mykey"+i}
                     article={item}
                     onReadMore={handleReadMore}
                   />

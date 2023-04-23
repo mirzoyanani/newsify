@@ -6,22 +6,24 @@ const savedNewsSlice = createSlice({
     saved: [],
   },
   reducers: {
-    setSaved: (state,action) => {
+    setSaved: (state, action) => {
       const newsToAdd = action.payload;
-      //  state.saved.push(action.payload);
-      // state.saved=[];
-      // console.log(newsToAdd.article.title);
-      // console.log(newsToAdd);
       const alreadyExists = state.saved.some(
         (news) => news.article.title === newsToAdd.article.title
       );
       if (!alreadyExists) {
         state.saved.push(newsToAdd);
-      }
-      else{
+      } else {
         // console.log("kaa");
         alert("You have already saved the article , see the saved section");
       }
-}}});
-export const { setSaved } = savedNewsSlice.actions;
+    },
+    removeSaved: (state, action) => {
+      const newsToRemove= action.payload;
+      const newsIndex = state.saved.findIndex((news) => news.article.title === newsToRemove.article.article.title);
+      state.saved.splice(newsIndex,1);
+    },
+  },
+});
+export const { setSaved,removeSaved } = savedNewsSlice.actions;
 export default savedNewsSlice.reducer;
