@@ -119,6 +119,7 @@ const General = () => {
               {news.map((item, i) => {
                 return (
                   <NewsCard
+                    id={item.title}
                     key={i}
                     article={item}
                     onReadMore={handleReadMore}

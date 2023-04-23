@@ -7,6 +7,7 @@ import { combineReducers } from "@reduxjs/toolkit";
 const persistConfig = {
   key: "root",
   storage,
+//   whitelist: ["savednews"],
 };
 
 
