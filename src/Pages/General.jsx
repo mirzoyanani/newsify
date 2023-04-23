@@ -17,7 +17,7 @@ const General = () => {
   const [category, setCategory] = useState("general");
   const [page, setPage] = useState(1);
 
-  const pageSize = 15;
+  const pageSize = 16;
   const articlesCount = useSelector((state) => state.news.articlescount);
   function nextPage() {
     if (page < articlesCount / pageSize) {

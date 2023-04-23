@@ -6,9 +6,9 @@ import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import SavedPage from "../Pages/SavedPage";
+import SearchPage from "../Pages/SearchPage";
 
 function App() {
-
   return (
     <>
       <Provider store={store}>
@@ -18,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<General />}></Route>
             <Route path="/saved" element={<SavedPage />}></Route>
+            <Route path="/search" element={<SearchPage/>}></Route>
           </Routes>
         </BrowserRouter>
         </PersistGate>

@@ -1,4 +1,4 @@
-// import React from 'react'
+
 import { removeSaved } from "../Redux/Slices/savedNewsSlice";
 import { useDispatch } from "react-redux";
 const SavedNewsCard = ({article,onReadMore}) => {
