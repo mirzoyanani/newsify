@@ -10,7 +10,10 @@ import categories from "../categories";
 import ReadMoreModal from "../Components/ReadMoreModal";
 // import { setSaved } from "../Redux/Slices/savedNewsSlice";
 
+
+
 const General = () => {
+ 
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState("us");
@@ -19,8 +22,10 @@ const General = () => {
 
   const pageSize = 16;
   const articlesCount = useSelector((state) => state.news.articlescount);
+ const page_Size = articlesCount / pageSize;
+ 
   function nextPage() {
-    if (page < articlesCount / pageSize) {
+    if (page < page_Size) {
       setPage(page + 1);
     }
   }
@@ -37,7 +42,6 @@ const General = () => {
       .then((rsp) =>  rsp.json())
       .then((rsp) => {
         dispatch(setNews(rsp.articles));
-        // console.log(rsp.articles);
         dispatch(setArticlesCount(rsp.totalResults));
         setLoading(false);
       });
@@ -128,8 +132,8 @@ const General = () => {
             </div>
             <div className="nextprevbtns">
               <button onClick={prevPage}>Prev Page</button>
-              <span>
-                <p>{page}</p>
+              <span className="pageitems">
+                 <p>{page}/{Math.floor(page_Size)+1}</p>
               </span>
               <button onClick={nextPage}>Next Page</button>
             </div>

@@ -1,28 +1,21 @@
-.news{
-    /* width:100vw; */
-    /* display: flex;
-    flex-wrap: wrap; */
-    gap:10px;
-    padding: 10px;
-    /* align-items: center;
-    justify-content: center; */
-     /* background-color: antiquewhite; */
-     background-color: rgb(
-        242, 245, 218
-        );
-        position: relative;
+.news {
+  gap: 10px;
+  padding: 10px;
+  background-color: rgb(242, 245, 218);
+  position: relative;
 }
-.newsCards{
-   display: flex;
-    flex-wrap: wrap;
-    /* column-count: 3; */
-      /* align-items: center;  */
-    justify-content: center; 
-    gap: 20px;
-    margin-top: 10px;
-
+.newsCards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
 }
-.nextprevbtns{
-    text-align: center;
-    margin: 5px;
+.nextprevbtns {
+  display: flex;
+  text-align: center;
+  margin: 5px;
+}
+.pageitems {
+  display: flex;
 }

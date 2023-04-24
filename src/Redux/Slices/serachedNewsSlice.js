@@ -8,6 +8,9 @@ const searchedNewsSlice = createSlice({
   reducers: {
     setSearched: (state, action) => {
       state.searchNews = action.payload;
+    },
+    setEmpty:(state) => {
+      state.searchNews = [];
     }
   },
 });

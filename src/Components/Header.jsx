@@ -5,17 +5,22 @@ import "../Css/header.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSearched } from "../Redux/Slices/serachedNewsSlice";
+
 const Header = () => {
   const [searchItem, setSearchItem] = useState(null);
   const dispach = useDispatch();
   function handleChange(e) {
     setSearchItem(e.target.value);
   }
-  async  function handleClick() {
-    // console.log(searchItem);
+  function handleInfo(info){
+    dispach(setSearched(info));
+  }
+  async  function handleSubmit(e) {
+    e.preventDefault();
     if(searchItem!=null){
-      await fetch(`https://newsapi.org/v2/everything?q=${searchItem}&apiKey=${api_key}`).then((rsp)=>rsp.json()).then((rsp)=>dispach(setSearched(rsp.articles)));
-    }
+      await fetch(`https://newsapi.org/v2/everything?q=${searchItem}&apiKey=${api_key}`).then((rsp)=>rsp.json()).then((rsp)=>handleInfo(rsp.articles));
+      window.location.replace("http://localhost:5173/search");
+    }    
   }
   return (
     <div className="header">
@@ -37,7 +42,7 @@ const Header = () => {
         </ul>
       </div>
       <div>
-        {/* <form   onSubmit={(e)=>handleSubmit(e)}> */}
+        <form   onSubmit={(e)=>handleSubmit(e)}>
         <div className="search-box">
           <input
             type="search"
@@ -47,15 +52,8 @@ const Header = () => {
               handleChange(e);
             }}
           />
-          <NavLink
-            onClick={handleClick}
-            className="shortcuts-list-item navlink"
-            to="/search"
-          >
-            Search
-          </NavLink>
         </div>
-        {/* </form> */}
+        </form>
       </div>
     </div>
   );
