@@ -37,9 +37,8 @@ function Items({currentItems}) {
 }
 
 function PaginatedItems({itemsPerPage}) {
-  
  const items = useSelector((state) => state.searchednews.searchNews);
-
+//   console.log(items);
   const [itemOffset, setItemOffset] = useState(0);
 
 
@@ -55,7 +54,11 @@ function PaginatedItems({itemsPerPage}) {
   };
   return (
     <>
-      <Items currentItems={currentItems} />
+       {
+        items==false ? (<div>
+         <img className="loadingimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSROpCcjxp8hU2xCYxKwoKW1eyDkJS20-moxA&usqp=CAU" alt="" />
+        </div>):<div>
+        <Items currentItems={currentItems} />
       <div className="nextprevbtns">
       <ReactPaginate
       activeClassName={"itemactive "}
@@ -63,17 +66,19 @@ function PaginatedItems({itemsPerPage}) {
       containerClassName={"pagination"}
       disabledClassName={"disabled-page"}
       nextClassName={"itemnext "}
-        breakLabel="..."
-        nextLabel="next >"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousClassName={"itemprevious"}
-        previousLabel="< previous"
-        renderOnZeroPageCount={null}
-
+      breakLabel="..."
+      nextLabel="next >"
+      onPageChange={handlePageClick}
+      pageRangeDisplayed={5}
+      pageCount={pageCount}
+      previousClassName={"itemprevious"}
+      previousLabel="< previous"
+      renderOnZeroPageCount={null}
       />
       </div>
+        </div>
+       }
+     
     </>
   );
 }
