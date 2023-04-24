@@ -2,7 +2,7 @@
     top:50%;
     border: 2px solid;
     width: 500px;
-    height: 400px;  
+    height: 400 px;  
     position: absolute;
     z-index: 10;
     background-color: aliceblue;
@@ -19,3 +19,4 @@
 .imgcontent{
     display: flex;
 }
+
