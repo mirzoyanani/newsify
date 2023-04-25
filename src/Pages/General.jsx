@@ -1,30 +1,29 @@
-// import React from "react";
-import api_key from "../api_key";
+
+import api_key from "../Data/api_key";
 import "../Css/general.css";
 import { useEffect, useState } from "react";
 import { setNews, setArticlesCount } from "../Redux/Slices/newsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import NewsCard from "../Components/NewsCard";
-import countries from "../countries";
-import categories from "../categories";
+import countries from "../Data/countries";
+import categories from "../Data/categories";
 import ReadMoreModal from "../Components/ReadMoreModal";
-// import { setSaved } from "../Redux/Slices/savedNewsSlice";
-
-
-
+import getData from "../Data/getData";
+import { useContext } from "react";
+import CategoryContext from "../Context/CategoryContext";
 const General = () => {
- 
+  const { category, setCategory } = useContext(CategoryContext);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState("us");
-  const [category, setCategory] = useState("general");
+  // const [category, setCategory] = useState("general");
   const [page, setPage] = useState(1);
 
   const pageSize = 16;
   const articlesCount = useSelector((state) => state.news.articlescount);
  const page_Size = articlesCount / pageSize;
  
-  function nextPage() {
+  function nextPage(){
     if (page < page_Size) {
       setPage(page + 1);
     }
@@ -34,38 +33,31 @@ const General = () => {
       setPage(page - 1);
     }
   }
+
   useEffect(() => {
     setLoading(true);
-    fetch(
-      `https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${api_key}&category=${category}&pageSize=${pageSize}&page=${page}`
-    )
+    getData(country,api_key,category,pageSize,page)
       .then((rsp) =>  rsp.json())
       .then((rsp) => {
         dispatch(setNews(rsp.articles));
         dispatch(setArticlesCount(rsp.totalResults));
         setLoading(false);
       });
+
+    
   }, [dispatch, country, category, page]);
 
   const news = useSelector((state) => state.news.news);
-
-  // function handleSave(title,publishedAt,imgUrl){
-  //      dispatch(setSaved({title,publishedAt,imgUrl}));
-  // }
-  // console.log(5555);
-
   const [selectedArticle, setSelectedArticle] = useState(null);
 
   const handleReadMore = (article) => {
     setSelectedArticle(article);
   };
-
   const handleCloseModal = () => {
     setSelectedArticle(null);
   };
 
   ///////////////
-
   return (
     <>
       <div className="news">

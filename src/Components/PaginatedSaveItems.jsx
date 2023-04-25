@@ -1,15 +1,8 @@
 import  { useState } from "react";
-// import ReactDOM from "react-dom";
 import ReactPaginate from "react-paginate";
 import SavedNewsCard from "./SavedNewsCard";
 import { useSelector } from "react-redux";
 import ReadMoreModal from "./ReadMoreModal";
-// import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-// import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-// Example items, to simulate fetching from another resources.
-
-// const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,15,16,17,18,19,20,21];
-
 function Items({currentItems}) {
   const [selectedArticle, setSelectedArticle] = useState(null);
   const handleReadMore = (article) => {
@@ -19,16 +12,16 @@ function Items({currentItems}) {
   const handleCloseModal = () => {
     setSelectedArticle(null);
   };
-  
   return (
     <>
-          <div  className="newsCards">
+       <div  className="newsCards">
       {currentItems &&
         currentItems.map((item,i) => (
             <SavedNewsCard
              key={"titile" + i}
              article={item}
              onReadMore={handleReadMore}
+         
             />
         ))}
           {selectedArticle && (
