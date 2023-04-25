@@ -2,7 +2,7 @@
 import "../Css/newsCard.css";
 import { useDispatch } from "react-redux";
 import { setSaved } from "../Redux/Slices/savedNewsSlice";
-const NewsCard = ({article, onReadMore}) => {
+const NewsCard = ({article, onReadMore,onShare}) => {
 const dispach = useDispatch();
 function setSavednews(){
     dispach(setSaved({article}));
@@ -18,7 +18,7 @@ function setSavednews(){
       </div>
       <div className="btns">
       <button onClick={setSavednews} className="saveSharebtn">Save</button>
-    <button className="saveSharebtn">Share</button>
+    <button  onClick={onShare} className="saveSharebtn">Share</button>
     <button onClick={() => onReadMore(article)} className="saveSharebtn">Read More</button>
       </div>
     </div>

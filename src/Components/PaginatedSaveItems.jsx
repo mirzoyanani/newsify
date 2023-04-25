@@ -2,16 +2,23 @@ import  { useState } from "react";
 import ReactPaginate from "react-paginate";
 import SavedNewsCard from "./SavedNewsCard";
 import { useSelector } from "react-redux";
-import ReadMoreModal from "./ReadMoreModal";
+import ReadMoreModal from "./ReadMoreModal"; 
+import ShareModal from "./ShareModal";
 function Items({currentItems}) {
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const[openshareModal,setOpenShareModal] = useState(false);
   const handleReadMore = (article) => {
     setSelectedArticle(article);
   };
-
   const handleCloseModal = () => {
     setSelectedArticle(null);
   };
+  function handleCloseShareModal(){
+    setOpenShareModal(false);
+  }
+  function handleOPenShareModal(){
+    setOpenShareModal(true);
+  }
   return (
     <>
        <div  className="newsCards">
@@ -21,12 +28,15 @@ function Items({currentItems}) {
              key={"titile" + i}
              article={item}
              onReadMore={handleReadMore}
-         
+             onShare={handleOPenShareModal}
             />
         ))}
           {selectedArticle && (
         <ReadMoreModal article={selectedArticle} onClose={handleCloseModal} />
          )}
+         {
+          openshareModal && <ShareModal onClose={handleCloseShareModal} />
+         }
           </div>    
     </>
   );

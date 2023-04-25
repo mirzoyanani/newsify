@@ -3,12 +3,14 @@ import ReactPaginate from "react-paginate";
 import { useSelector } from "react-redux";
 import ReadMoreModal from "./ReadMoreModal";
 import NewsCard from "../Components/NewsCard";
+import ShareModal from "./ShareModal";
 // import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 // import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 // Example items, to simulate fetching from another resources.
 
 function Items({currentItems}) {
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const[openshareModal,setOpenShareModal] = useState(false);
   const handleReadMore = (article) => {
     setSelectedArticle(article);
   };
@@ -17,6 +19,12 @@ function Items({currentItems}) {
     setSelectedArticle(null);
   };
   
+  function handleCloseShareModal(){
+    setOpenShareModal(false);
+  }
+  function handleOPenShareModal(){
+    setOpenShareModal(true);
+  }
   return (
     <>
           <div  className="newsCards">
@@ -26,11 +34,15 @@ function Items({currentItems}) {
              key={"titile" + i}
              article={item}
              onReadMore={handleReadMore}
+             onShare={handleOPenShareModal}
             />
         ))}
           {selectedArticle && (
         <ReadMoreModal article={selectedArticle} onClose={handleCloseModal} />
          )}
+          {
+          openshareModal && <ShareModal onClose={handleCloseShareModal} />
+         }
           </div>    
     </>
   );
@@ -38,9 +50,7 @@ function Items({currentItems}) {
 
 function PaginatedItems({itemsPerPage}) {
  const items = useSelector((state) => state.searchednews.searchNews);
-//   console.log(items);
   const [itemOffset, setItemOffset] = useState(0);
-
 
   const endOffset = itemOffset + itemsPerPage;
 

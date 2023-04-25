@@ -19,3 +19,9 @@
 .pageitems {
   display: flex;
 }
+
+.shareModal{
+  border: 2px solid;
+  text-align: center;
+  width: 500px;
+}

@@ -11,6 +11,8 @@ import ReadMoreModal from "../Components/ReadMoreModal";
 import getData from "../Data/getData";
 import { useContext } from "react";
 import CategoryContext from "../Context/CategoryContext";
+import ShareModal from "../Components/ShareModal";
+// import ShareModal from "react-share/lib/ShareButton";
 const General = () => {
   const { category, setCategory } = useContext(CategoryContext);
   const dispatch = useDispatch();
@@ -19,9 +21,18 @@ const General = () => {
   // const [category, setCategory] = useState("general");
   const [page, setPage] = useState(1);
 
+
   const pageSize = 16;
   const articlesCount = useSelector((state) => state.news.articlescount);
  const page_Size = articlesCount / pageSize;
+
+ const[openshareModal,setOpenShareModal] = useState(false);
+  function handleCloseShareModal(){
+    setOpenShareModal(false);
+  }
+  function handleOPenShareModal(){
+    setOpenShareModal(true);
+  }
  
   function nextPage(){
     if (page < page_Size) {
@@ -112,12 +123,16 @@ const General = () => {
             {selectedArticle && (
         <ReadMoreModal article={selectedArticle} onClose={handleCloseModal} />
       )} 
+        {
+          openshareModal && <ShareModal onClose={handleCloseShareModal} />
+         }
               {news.map((item, i) => {
                 return (
                   <NewsCard
                     key={"mykey"+i}
                     article={item}
                     onReadMore={handleReadMore}
+                    onShare={handleOPenShareModal}
                   />
                 );
               })}

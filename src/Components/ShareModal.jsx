@@ -31,15 +31,13 @@ import {
 } from "react-share";
 
 // eslint-disable-next-line react-refresh/only-export-components
-const ShareModal = () => {
+const ShareModal = ({onClose}) => {
     let url = window.location.href;
     const shareUrl = url;
     return (
-      <div
+      <div  className="readMoreModal"
         style={{
           background: "#0000",
-          height: "100vh",
-          width: "100%",
         }}
       >
         <FacebookShareButton
@@ -113,8 +111,10 @@ const ShareModal = () => {
         >
           <TelegramIcon size={40} round={true} />
         </TelegramShareButton>
+        <div>
+        <button onClick={onClose}>Close</button>
+        </div>
       </div>
     );};
-
     
     export default ShareModal;
