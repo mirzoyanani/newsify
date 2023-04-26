@@ -13,11 +13,8 @@ function Items({currentItems}) {
   const handleCloseModal = () => {
     setSelectedArticle(null);
   };
-  function handleCloseShareModal(){
-    setOpenShareModal(false);
-  }
-  function handleOPenShareModal(){
-    setOpenShareModal(true);
+  function handleShareModal(){
+    setOpenShareModal(!openshareModal);
   }
   return (
     <>
@@ -28,14 +25,14 @@ function Items({currentItems}) {
              key={"titile" + i}
              article={item}
              onReadMore={handleReadMore}
-             onShare={handleOPenShareModal}
+             onShare={handleShareModal}
             />
         ))}
           {selectedArticle && (
         <ReadMoreModal article={selectedArticle} onClose={handleCloseModal} />
          )}
          {
-          openshareModal && <ShareModal onClose={handleCloseShareModal} />
+          openshareModal && <ShareModal onClose={handleShareModal} />
          }
           </div>    
     </>

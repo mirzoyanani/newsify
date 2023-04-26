@@ -5,9 +5,5 @@ import persistedReducer from "../Slices/persistedReducer ";
 
   const store = createStore(persistedReducer);
 export const persistor = persistStore(store);
-// const store = configureStore({
-//   reducer: persistedReducer,
-// });
-
 
 export default store;

@@ -16,7 +16,6 @@ const MenuItems = () => {
             </div>
             <div className="dropdown-content">
                 <ul>
-
               
               <li
                 onClick={() => setCategory("general")}
