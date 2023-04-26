@@ -2,14 +2,10 @@
 import {format} from "date-fns";
 import "../Css/readMore.css";
 const ReadMoreModal = ({ onClose, article }) => {
-  // const date = format(article.publishedAt, "dd MM yyyy");
-  // console.log(date);  
+
 const date = new Date(article.publishedAt);
 const formattedDate = format(date, "MMMM dd, yyyy");
-// const formattedTime = format(date, "h:mm a");
-// const formattedTimeZone = format(date, "xxx");
 
-console.log(`${formattedDate}`);
   return (
     <div className="readMoreModal">
     

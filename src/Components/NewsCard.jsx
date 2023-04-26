@@ -1,8 +1,11 @@
 
+import {format} from "date-fns";
 import "../Css/newsCard.css";
 import { useDispatch } from "react-redux";
 import { setSaved } from "../Redux/Slices/savedNewsSlice";
 const NewsCard = ({article, onReadMore,onShare}) => {
+  const date = new Date(article.publishedAt);
+  const formattedDate = format(date, "MMMM dd, yyyy");
 const dispach = useDispatch();
 function setSavednews(){
     dispach(setSaved({article}));
@@ -12,7 +15,7 @@ function setSavednews(){
         <div>
         <img className="newsimg" src={article.urlToImage} />
       </div>
-      <p>{article.publishedAt}</p>
+      <p>{formattedDate}</p>
       <div>
         <p className="newsCardTitle">{article.title}</p>
       </div>

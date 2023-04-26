@@ -1,4 +1,3 @@
-
 import api_key from "../Data/api_key";
 import "../Css/general.css";
 import { useEffect, useState } from "react";
@@ -6,35 +5,31 @@ import { setNews, setArticlesCount } from "../Redux/Slices/newsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import NewsCard from "../Components/NewsCard";
 import countries from "../Data/countries";
-import categories from "../Data/categories";
 import ReadMoreModal from "../Components/ReadMoreModal";
 import getData from "../Data/getData";
 import { useContext } from "react";
 import CategoryContext from "../Context/CategoryContext";
 import ShareModal from "../Components/ShareModal";
-// import ShareModal from "react-share/lib/ShareButton";
 const General = () => {
-  const { category, setCategory } = useContext(CategoryContext);
+  const { category} = useContext(CategoryContext);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState("us");
-  // const [category, setCategory] = useState("general");
   const [page, setPage] = useState(1);
-
+  const [openshareModal, setOpenShareModal] = useState(false);
 
   const pageSize = 16;
   const articlesCount = useSelector((state) => state.news.articlescount);
- const page_Size = articlesCount / pageSize;
+  const page_Size =Math.round( articlesCount / pageSize);
 
- const[openshareModal,setOpenShareModal] = useState(false);
-  function handleCloseShareModal(){
+  function handleCloseShareModal() {
     setOpenShareModal(false);
   }
-  function handleOPenShareModal(){
+  function handleOPenShareModal() {
     setOpenShareModal(true);
   }
- 
-  function nextPage(){
+
+  function nextPage() {
     if (page < page_Size) {
       setPage(page + 1);
     }
@@ -47,15 +42,13 @@ const General = () => {
 
   useEffect(() => {
     setLoading(true);
-    getData(country,api_key,category,pageSize,page)
-      .then((rsp) =>  rsp.json())
+    getData(country, api_key, category, pageSize, page)
+      .then((rsp) => rsp.json())
       .then((rsp) => {
         dispatch(setNews(rsp.articles));
         dispatch(setArticlesCount(rsp.totalResults));
         setLoading(false);
       });
-
-    
   }, [dispatch, country, category, page]);
 
   const news = useSelector((state) => state.news.news);
@@ -101,35 +94,18 @@ const General = () => {
                 );
               })}
             </select>
-            <label htmlFor="category">Ckeck category :</label>
-            <select
-              name="category"
-              defaultValue={category}
-              id="category"
-              onChange={(e) => {
-                setCategory(e.target.value);
-                setPage(1);
-              }}
-            >
-              {categories.map((item, i) => {
-                return (
-                  <option key={i} value={item}>
-                    {item}
-                  </option>
-                );
-              })}
-            </select>
             <div className="newsCards">
-            {selectedArticle && (
-        <ReadMoreModal article={selectedArticle} onClose={handleCloseModal} />
-      )} 
-        {
-          openshareModal && <ShareModal onClose={handleCloseShareModal} />
-         }
+              {selectedArticle && (
+                <ReadMoreModal
+                  article={selectedArticle}
+                  onClose={handleCloseModal}
+                />
+              )}
+              {openshareModal && <ShareModal onClose={handleCloseShareModal} />}
               {news.map((item, i) => {
                 return (
                   <NewsCard
-                    key={"mykey"+i}
+                    key={"mykey" + i}
                     article={item}
                     onReadMore={handleReadMore}
                     onShare={handleOPenShareModal}
@@ -140,7 +116,9 @@ const General = () => {
             <div className="nextprevbtns">
               <button onClick={prevPage}>Prev Page</button>
               <span className="pageitems">
-                 <p>{page}/{Math.floor(page_Size)+1}</p>
+                <p>
+                  {page}/{page_Size}
+                </p>
               </span>
               <button onClick={nextPage}>Next Page</button>
             </div>
