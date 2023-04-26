@@ -13,6 +13,7 @@ import ShareModal from "../Components/ShareModal";
 const General = () => {
   const { category} = useContext(CategoryContext);
   const dispatch = useDispatch();
+
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState("us");
   const [page, setPage] = useState(1);
@@ -20,7 +21,7 @@ const General = () => {
 
   const pageSize = 16;
   const articlesCount = useSelector((state) => state.news.articlescount);
-  const page_Size =Math.round( articlesCount / pageSize);
+  const page_Size = Math.round( articlesCount / pageSize);
 
   function handleCloseShareModal() {
     setOpenShareModal(false);

@@ -3,8 +3,14 @@ import { removeSaved } from "../Redux/Slices/savedNewsSlice";
 import { useDispatch } from "react-redux";
 const SavedNewsCard = ({article,onReadMore,onShare }) => {
   const dispatch = useDispatch();
-  const date = new Date(article.article.publishedAt);
-const formattedDate = format(date, "MMMM dd, yyyy");
+  let formattedDate = undefined;
+  if(article.article.publishedAt!=undefined){
+    const date = new Date(article.article.publishedAt);
+     formattedDate = format(date, "MMMM dd, yyyy");
+  }else{
+    formattedDate = article.article.publishedAt;
+  }
+ 
   return (
     <div className="newsCard">
       <img className="newsimg" src={article.article.urlToImage} />

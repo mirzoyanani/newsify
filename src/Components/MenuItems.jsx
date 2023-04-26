@@ -1,10 +1,9 @@
 // import React from 'react'
-
 import MenuItem from "./MenuItem";
 const MenuItems = () => {
   return (
     <div>
-      <ul className="shortcuts-list">
+      <ul>
           <div className="dropdown">
             <div className="container dropbtn">
               <div className="bar1"></div>
@@ -12,10 +11,13 @@ const MenuItems = () => {
               <div className="bar3"></div>
             </div>
             <div className="dropdown-content">
-              <MenuItem/>   
+            <MenuItem className="dropdown-menu"/>
             </div>
           </div>
-        <MenuItem/>
+          <div  className="shortcuts-list">
+              <MenuItem/>               
+
+          </div>
       </ul>
     </div>
   );

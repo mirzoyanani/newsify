@@ -5,8 +5,7 @@ import { NavLink } from "react-router-dom";
 const MenuItem = () => {
     const { setCategory } = useContext(CategoryContext);
   return (
-    <>
-              
+    <>      
     <li
       onClick={() => setCategory("general")}
       className="shortcuts-list-item"
@@ -50,7 +49,7 @@ const MenuItem = () => {
       Science
     </li>
     <li className="shortcuts-list-item">
-<NavLink className="shortcuts-list-item dropdown" to="/saved">
+<NavLink className="shortcuts-list-item " to="/saved">
   Saved
 </NavLink>
 </li>

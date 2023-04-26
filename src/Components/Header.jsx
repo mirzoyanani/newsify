@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { setSearched } from "../Redux/Slices/serachedNewsSlice";
 import MenuItems from "./MenuItems";
 const Header = () => {
-  // const { setCategory } = useContext(CategoryContext);
   const [searchItem, setSearchItem] = useState(null);
   const dispach = useDispatch();
   function handleChange(e) {
@@ -32,9 +31,7 @@ const Header = () => {
         <p className="title"> Newsify</p>
       </NavLink>
       <div className="navbar">
-
         <MenuItems/>
-       
       </div>
       <div>
         <form onSubmit={(e) => handleSubmit(e)}>

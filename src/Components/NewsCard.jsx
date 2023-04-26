@@ -4,8 +4,16 @@ import "../Css/newsCard.css";
 import { useDispatch } from "react-redux";
 import { setSaved } from "../Redux/Slices/savedNewsSlice";
 const NewsCard = ({article, onReadMore,onShare}) => {
-  const date = new Date(article.publishedAt);
-  const formattedDate = format(date, "MMMM dd, yyyy");
+
+  let formattedDate = undefined;
+  if(article.publishedAt!=undefined){
+    const date = new Date(article.publishedAt);
+     formattedDate = format(date, "MMMM dd, yyyy");
+  }else{
+    formattedDate = article.article.publishedAt;
+  }
+  // const date = new Date(article.publishedAt);
+  // const formattedDate = format(date, "MMMM dd, yyyy");
 const dispach = useDispatch();
 function setSavednews(){
     dispach(setSaved({article}));

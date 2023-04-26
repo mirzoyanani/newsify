@@ -58,6 +58,10 @@ function PaginatedItems({itemsPerPage}) {
   };
   return (
     <>
+     {
+        items==false ? (<div>
+         <img className="loadingimg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSROpCcjxp8hU2xCYxKwoKW1eyDkJS20-moxA&usqp=CAU" alt="" />
+        </div>):<div>
       <Items currentItems={currentItems} />
       <div className="nextprevbtns">
       <ReactPaginate
@@ -77,6 +81,7 @@ function PaginatedItems({itemsPerPage}) {
 
       />
       </div>
+      </div>}
     </>
   );
 }
