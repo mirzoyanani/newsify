@@ -9,6 +9,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import SavedPage from "../Pages/SavedPage";
 import SearchPage from "../Pages/SearchPage";
 import CategoryContext from "../Context/CategoryContext";
+import Footer from "./Footer";
 function App() {
   const [category,setCategory] = useState("general");
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/saved" element={<SavedPage />}></Route>
             <Route path="/search" element={<SearchPage/>}></Route>
           </Routes>
+          <Footer/>
         </BrowserRouter>
         </PersistGate>
       </Provider>

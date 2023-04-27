@@ -62,7 +62,6 @@ const General = () => {
     setSelectedArticle(null);
   };
 
-  ///////////////
   return (
     <>
       <div className="news">
@@ -77,7 +76,7 @@ const General = () => {
         )}
         {!loading && (
           <div>
-            <label htmlFor="countries">Ckeck country :</label>
+            <label htmlFor="countries"> Ckeck country : </label>
             <select
               name="countries"
               defaultValue={country}
@@ -86,10 +85,11 @@ const General = () => {
                 setCountry(e.target.value);
                 setPage(1);
               }}
+              className="countrySelec"
             >
               {countries.map((item, i) => {
                 return (
-                  <option key={i} value={item}>
+                  <option className="option" key={i+"countryOption"} value={item}>
                     {item}
                   </option>
                 );
@@ -115,13 +115,13 @@ const General = () => {
               })}
             </div>
             <div className="nextprevbtns">
-              <button onClick={prevPage}>Prev Page</button>
-              <span className="pageitems">
+              <button className="btnsnextprev" onClick={prevPage}>Prev Page</button>
+              <span className="pageitem s">
                 <p>
                   {page}/{page_Size}
                 </p>
               </span>
-              <button onClick={nextPage}>Next Page</button>
+              <button  className="btnsnextprev" onClick={nextPage}>Next Page</button>
             </div>
           </div>
         )}

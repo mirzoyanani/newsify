@@ -1,7 +1,7 @@
 .news {
   gap: 10px;
   padding: 10px;
-  background-color: rgb(242, 245, 218);
+  /* background-color: rgb(242, 245, 218); */
   position: relative;
 }
 .newsCards {
@@ -24,4 +24,22 @@
   border: 2px solid;
   text-align: center;
   width: 500px;
+}
+.countrySelec{
+  width: 100px;
+  margin: 5px;
+}
+.option{
+  text-align: center;
+}
+label{
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.btnsnextprev{
+  width: 120px;
+  margin: 5px;
+background: none;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+background-color: rgb(178, 174, 169);
 }

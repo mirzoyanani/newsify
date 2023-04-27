@@ -4,8 +4,13 @@ import PaginatedItems from "../Components/PaginatedSaveItems";
 const SavedPage = () => {
   return (
     <div>
+      
       <PaginatedItems itemsPerPage={12}/> 
-      {/* <ShareModal/>    */}
+      {/* <img
+              className="loadingimg"
+              src="https://www.downgraf.com/wp-content/uploads/2019/05/Loader-animation-principle-freebie.gif?x36019"
+              alt=""
+            /> */}
   </div>
   );
 };

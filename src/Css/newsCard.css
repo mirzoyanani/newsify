@@ -80,7 +80,8 @@ object-fit: cover;
 .pagination{
   text-align: center;
   display: flex;
-  width: 30%;  
+  /* width: 30%;   */
+  width: 300px;
   border: 2px solid;
   align-items: center;
   justify-content: space-around;

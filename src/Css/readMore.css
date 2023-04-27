@@ -65,3 +65,64 @@ box-shadow: rgba(0, 0, 0, 0.56) 100px 100px 100px 100px;
   font-size: 2em;
   font-weight: bolder;
 }
+@media (max-width:550px) {
+  .readMoreModal{
+    width: 450px;
+  }
+  .shareModal{
+    width: 450px;
+  }
+}
+@media (max-width:500px) {
+  .readMoreModal{
+    width: 430px;
+    /* height: 400px; */
+  }
+  .imgcontent{
+    display: flex;
+    flex-direction: column;
+}
+  .shareModal{
+    width: 400px;
+  }
+  .readMoreTitle{
+    font-size: 1.2em;}
+}
+@media (max-width:400px) {
+  .readMoreModal{
+    width: 220px;
+  }
+}
+
+@media (max-width:450px) {
+  .readMoreModal{
+    width: 390px;
+  }
+  .shareModal{
+    width: 380px;
+  }
+}
+@media (max-width:436px) {
+  .readMoreModal{
+    width: 320px;
+  }
+  .shareModal{
+    width: 340px;
+  }
+}
+@media (max-width:492px) {
+  .readMoreModal{
+    width: 370px;
+  }
+  .shareModal{
+    width: 300px;
+  }
+}
+@media (max-width:390px) {
+  .readMoreModal{
+    width: 270px;
+  }
+  .shareModal{
+    width: 270px;
+  }
+}
