@@ -85,6 +85,7 @@ object-fit: cover;
   border: 2px solid;
   align-items: center;
   justify-content: space-around;
+  background-color: #eae4e4;
 }
 li{
     list-style-type: none;
@@ -97,7 +98,8 @@ li{
   
 }
 .itemactive{
-  background-color: #373B44;
+  background-color: #828385;
+
   border-radius: 7px;
   padding:2px;
 }
