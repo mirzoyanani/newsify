@@ -50,7 +50,7 @@ const MenuItem = () => {
     </li>
     <li className="shortcuts-list-item">
 <NavLink className="shortcuts-list-item " to="/saved">
-  Saved
+  Saved Page
 </NavLink>
 </li>
 </>

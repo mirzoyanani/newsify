@@ -223,7 +223,7 @@ width: 150px;
 
     @media (max-width:400px) {
       .title {
-        font-size: 25px;
+        font-size: 30px;
       }
       .shortcuts-list {
          display: none;

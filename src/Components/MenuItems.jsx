@@ -15,8 +15,7 @@ const MenuItems = () => {
             </div>
           </div>
           <div  className="shortcuts-list">
-              <MenuItem/>               
-
+              <MenuItem/>             
           </div>
       </ul>
     </div>

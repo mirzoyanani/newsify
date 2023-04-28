@@ -78,7 +78,6 @@ function PaginatedItems({itemsPerPage}) {
         previousClassName={"itemprevious"}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
-
       />
       </div>
       </div>}

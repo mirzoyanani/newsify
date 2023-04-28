@@ -1,28 +1,22 @@
 import { useState } from "react";
-import api_key from "../Data/api_key";
 import "../Css/header.css";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { setSearched } from "../Redux/Slices/serachedNewsSlice";
 import MenuItems from "./MenuItems";
+import { setSearchTitle } from "../Redux/Slices/serachedNewsSlice";
 const Header = () => {
+  // let history = useHistory ();
   const [searchItem, setSearchItem] = useState(null);
   const dispach = useDispatch();
-  function handleChange(e) {
-    setSearchItem(e.target.value);
+  
+  function handleInfo() {
+    window.location.replace("http://localhost:5173/search");
+    dispach(setSearchTitle(searchItem));
   }
-  function handleInfo(info) {
-    dispach(setSearched(info));
-  }
-  async function handleSubmit(e) {
+  async function handleSubmit(e){
     e.preventDefault();
     if (searchItem != null) {
-      await fetch(
-        `https://newsapi.org/v2/everything?q=${searchItem}&apiKey=${api_key}`
-      )
-        .then((rsp) => rsp.json())
-        .then((rsp) => handleInfo(rsp.articles));
-      window.location.replace("http://localhost:5173/search");
+          handleInfo();
     }
   }
   return (
@@ -41,12 +35,15 @@ const Header = () => {
               className="input-search"
               placeholder="Type to Search..."
               onChange={(e) => {
-                handleChange(e);
+                setSearchItem(e.target.value);
               }}
             />
           </div>
         </form>
       </div>
+       
+
+      
     </div>
   );
 };

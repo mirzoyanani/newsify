@@ -4,6 +4,7 @@ const searchedNewsSlice = createSlice({
   name: "searchednews",
   initialState: {
     searchNews: [],
+    searchTitle:null
   },
   reducers: {
     setSearched: (state, action) => {
@@ -11,8 +12,11 @@ const searchedNewsSlice = createSlice({
     },
     setEmpty:(state) => {
       state.searchNews = [];
+    },
+    setSearchTitle:(state,action) => {
+      state.searchTitle = action.payload;
     }
   },
 });
-export const { setSearched} = searchedNewsSlice.actions;
+export const { setSearched,setSearchTitle,setEmpty} = searchedNewsSlice.actions;
 export default searchedNewsSlice.reducer;

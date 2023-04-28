@@ -10,6 +10,8 @@ import getData from "../Data/getData";
 import { useContext } from "react";
 import CategoryContext from "../Context/CategoryContext";
 import ShareModal from "../Components/ShareModal";
+
+// fetch("https://newsapi.org/v2/everything?q=bitcoin&apiKey=f3ac1bdb829e4602ad4fcc2cf02604ee").then((rsp)=> rsp.json()).then((rsp)=>console.log(rsp.articles));
 const General = () => {
   const { category} = useContext(CategoryContext);
   const dispatch = useDispatch();
@@ -41,8 +43,14 @@ const General = () => {
     }
   }
 
+  // fetch("https://newsapi.org/v2/everything?q=bitcoin&apiKey=f3ac1bdb829e4602ad4fcc2cf02604ee").then((rsp)=> rsp.json()).then((rsp)=>   dispatch(setNews(rsp.articles)));
+
+  //  useEffect(()=>{
+  //   fetch("https://newsapi.org/v2/everything?q=bitcoin&apiKey=f3ac1bdb829e4602ad4fcc2cf02604ee").then((rsp)=> rsp.json()).then((rsp)=>console.log(rsp.articles));
+  //   console.log(55555555);
+  //  },[]);
+  
   useEffect(() => {
-    setLoading(true);
     getData(country, api_key, category, pageSize, page)
       .then((rsp) => rsp.json())
       .then((rsp) => {
